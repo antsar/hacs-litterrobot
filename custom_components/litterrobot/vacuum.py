@@ -54,18 +54,7 @@ class LitterRobotCleaner(LitterRobotEntity, VacuumEntity):
     @property
     def state(self):
         """Return the state of the cleaner."""
-        switcher = {
-            Robot.UnitStatus.CCP: STATE_CLEANING,
-            Robot.UnitStatus.EC: STATE_CLEANING,
-            Robot.UnitStatus.CCC: STATE_DOCKED,
-            Robot.UnitStatus.CST: STATE_DOCKED,
-            Robot.UnitStatus.DF1: STATE_DOCKED,
-            Robot.UnitStatus.DF2: STATE_DOCKED,
-            Robot.UnitStatus.RDY: STATE_DOCKED,
-            Robot.UnitStatus.OFF: STATE_OFF,
-        }
-
-        return switcher.get(self.robot.unit_status, STATE_ERROR)
+        return self.robot.unit_status
 
     @property
     def error(self):
